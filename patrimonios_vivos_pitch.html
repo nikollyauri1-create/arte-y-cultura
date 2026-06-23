@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patrimonios Vivos · Pitch Deck Infografía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --night:    #1A0A2E;
+    --deep:     #2D1B54;
+    --sol:      #F5E642;
+    --rojo:     #E84855;
+    --turq:     #3DD6C8;
+    --cream:    #F4EED8;
+    --muted:    #B0A8C8;
+    --font-d:   'Space Grotesk', sans-serif;
+    --font-b:   'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--night);
+    color: var(--cream);
+    font-family: var(--font-b);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV PILLS ── */
+  nav {
+    position: fixed;
+    top: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.4rem;
+    z-index: 100;
+    background: rgba(26,10,46,0.85);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 0.8rem;
+    border-radius: 3rem;
+    border: 1px solid rgba(245,230,66,0.15);
+  }
+  nav a {
+    font-family: var(--font-d);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2rem;
+    transition: all 0.2s;
+  }
+  nav a:hover { background: var(--deep); color: var(--sol); }
+
+  /* ── SHARED SECTION ── */
+  section {
+    min-height: 100vh;
+    padding: 7rem 1.5rem 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .container { width: 100%; max-width: 900px; }
+
+  .phase-label {
+    font-family: var(--font-d);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .phase-label::before {
+    content: '';
+    display: inline-block;
+    width: 1.8rem;
+    height: 2px;
+    background: currentColor;
+  }
+
+  h1, h2 { font-family: var(--font-d); line-height: 1.1; }
+
+  /* ── SECTION 1: HOOK ── */
+  #hook {
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, #3A0D6E 0%, var(--night) 100%);
+    text-align: center;
+  }
+  #hook .phase-label { color: var(--rojo); }
+  #hook h1 {
+    font-size: clamp(2.4rem, 7vw, 5rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  #hook h1 em {
+    font-style: normal;
+    color: var(--sol);
+    display: block;
+  }
+  #hook .tagline {
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+  }
+  .hook-stat-row {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .hook-stat {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 1rem;
+    padding: 1.2rem 2rem;
+    text-align: center;
+  }
+  .hook-stat .num {
+    font-family: var(--font-d);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--sol);
+    display: block;
+  }
+  .hook-stat .lbl {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Mapa SVG decorativo */
+  .peru-map-wrap {
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.12;
+    width: 360px;
+    pointer-events: none;
+  }
+  @media (max-width: 700px) { .peru-map-wrap { display: none; } }
+
+  .time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-d);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--rojo);
+    background: rgba(232,72,85,0.12);
+    border: 1px solid rgba(232,72,85,0.3);
+    border-radius: 2rem;
+    padding: 0.3rem 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── SECTION 2: INTERÉS ── */
+  #interes {
+    background: var(--night);
+  }
+  #interes .phase-label { color: var(--turq); }
+  #interes h2 {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  #interes .sub {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+  .problem-card {
+    background: var(--deep);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border-left: 3px solid var(--turq);
+  }
+  .problem-card .icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
+  .problem-card h3 {
+    font-family: var(--font-d);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+  .problem-card p { font-size: 0.85rem; color: var(--muted); }
+
+  .market-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .market-pill {
+    flex: 1;
+    min-width: 150px;
+    background: rgba(61,214,200,0.08);
+    border: 1px solid rgba(61,214,200,0.25);
+    border-radius: 0.8rem;
+    padding: 1rem 1.2rem;
+    text-align: center;
+  }
+  .market-pill .m-num {
+    font-family: var(--font-d);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--turq);
+    display: block;
+  }
+  .market-pill .m-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .market-pill .m-desc {
+    font-size: 0.78rem;
+    color: var(--cream);
+    margin-top: 0.2rem;
+  }
+
+  /* ── SECTION 3: DESEO ── */
+  #deseo {
+    background: linear-gradient(160deg, #1A0A2E 0%, #2A0E3F 50%, #1A0A2E 100%);
+  }
+  #deseo .phase-label { color: var(--sol); }
+  #deseo h2 {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  #deseo .sub { color: var(--muted); font-size: 1rem; margin-bottom: 2.5rem; max-width: 600px; }
+
+  /* Demo flow */
+  .demo-flow {
+    background: var(--deep);
+    border-radius: 1.2rem;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(245,230,66,0.15);
+  }
+  .demo-flow h3 {
+    font-family: var(--font-d);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--sol);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .demo-steps {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+  .demo-step {
+    flex: 1;
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 0.8rem;
+    position: relative;
+  }
+  .demo-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -0.6rem;
+    top: 1.2rem;
+    color: var(--sol);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .step-icon {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    background: rgba(245,230,66,0.12);
+    border: 1.5px solid var(--sol);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    flex-shrink: 0;
+  }
+  .demo-step p { font-size: 0.78rem; color: var(--muted); }
+
+  /* Diferenciadores */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .diff-card {
+    background: rgba(245,230,66,0.05);
+    border: 1px solid rgba(245,230,66,0.2);
+    border-radius: 1rem;
+    padding: 1.3rem;
+  }
+  .diff-card h3 {
+    font-family: var(--font-d);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--sol);
+    margin-bottom: 0.4rem;
+  }
+  .diff-card p { font-size: 0.82rem; color: var(--muted); }
+
+  /* Roadmap */
+  .roadmap {
+    display: flex;
+    gap: 0;
+    background: var(--deep);
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .rm-phase {
+    flex: 1;
+    padding: 1.2rem 1rem;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+  }
+  .rm-phase:last-child { border-right: none; }
+  .rm-phase .rm-mes {
+    font-family: var(--font-d);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sol);
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+  .rm-phase h4 {
+    font-family: var(--font-d);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.3rem;
+  }
+  .rm-phase p { font-size: 0.72rem; color: var(--muted); }
+
+  /* Moat */
+  .moat-row {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .moat-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(232,72,85,0.08);
+    border: 1px solid rgba(232,72,85,0.25);
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    color: var(--cream);
+  }
+  .moat-pill span.dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--rojo);
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION 4: ACCIÓN ── */
+  #accion {
+    background: var(--night);
+  }
+  #accion .phase-label { color: #A78BFA; }
+  #accion h2 {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  #accion .sub { color: var(--muted); font-size: 1rem; margin-bottom: 2.5rem; max-width: 600px; }
+
+  .ask-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .ask-card {
+    background: var(--deep);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .ask-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: #A78BFA;
+  }
+  .ask-card .ask-num {
+    font-family: var(--font-d);
+    font-size: 2rem;
+    font-weight: 800;
+    color: #A78BFA;
+    opacity: 0.35;
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+  }
+  .ask-card h3 {
+    font-family: var(--font-d);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+  .ask-card p { font-size: 0.82rem; color: var(--muted); }
+
+  .next-steps {
+    background: rgba(167,139,250,0.06);
+    border: 1px solid rgba(167,139,250,0.2);
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .next-steps h3 {
+    font-family: var(--font-d);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #A78BFA;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .next-steps ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .next-steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--cream);
+  }
+  .next-steps li::before {
+    content: '↳';
+    color: #A78BFA;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION 5: CIERRE ── */
+  #cierre {
+    background: radial-gradient(ellipse 90% 70% at 50% 50%, #2D0B5E 0%, var(--night) 100%);
+    text-align: center;
+  }
+  #cierre .phase-label { color: var(--sol); }
+  #cierre h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  #cierre h2 em {
+    font-style: normal;
+    color: var(--sol);
+  }
+  #cierre .closing-quote {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--muted);
+    max-width: 580px;
+    margin: 0 auto 2.5rem;
+    font-style: italic;
+  }
+  .cta-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .cta-main {
+    background: var(--sol);
+    color: var(--night);
+    font-family: var(--font-d);
+    font-size: 1.05rem;
+    font-weight: 800;
+    padding: 1rem 2.5rem;
+    border-radius: 3rem;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: inline-block;
+  }
+  .cta-main:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(245,230,66,0.35);
+  }
+  .cta-contact {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .cta-contact a { color: var(--turq); text-decoration: none; }
+  .cta-contact a:hover { text-decoration: underline; }
+
+  .closing-trio {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .ct-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .ct-item .ct-icon { font-size: 1.4rem; }
+  .ct-item .ct-val {
+    font-family: var(--font-d);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .ct-item .ct-desc { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* Footer meta */
+  .footer-meta {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--muted);
+    opacity: 0.6;
+  }
+
+  /* ── DIVIDERS ── */
+  .section-divider {
+    width: 100%;
+    max-width: 900px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    margin: 0 auto;
+  }
+
+  /* ── DURATION BADGE ── */
+  .dur-badge {
+    font-family: var(--font-d);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--night);
+    background: var(--sol);
+    border-radius: 2rem;
+    padding: 0.2rem 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 600px) {
+    nav { display: none; }
+    .demo-steps { flex-direction: column; }
+    .demo-step:not(:last-child)::after { content: '↓'; position: static; display: block; margin: 0.3rem auto; }
+    .roadmap { flex-direction: column; }
+    .rm-phase { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .closing-trio { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hook">Hook</a>
+  <a href="#interes">Interés</a>
+  <a href="#deseo">Deseo</a>
+  <a href="#accion">Acción</a>
+  <a href="#cierre">Cierre</a>
+</nav>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- FASE 1 · HOOK  8% → ~15 seg              -->
+<!-- ══════════════════════════════════════════ -->
+<section id="hook">
+  <!-- Mapa decorativo -->
+  <div class="peru-map-wrap" aria-hidden="true">
+    <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M80,30 L140,20 L200,50 L220,90 L210,150 L240,200 L230,260 L200,310 L170,360 L130,380 L100,360 L70,320 L50,270 L40,210 L60,160 L50,110 Z" stroke="#F5E642" stroke-width="2" fill="none" stroke-dasharray="6 4"/>
+      <circle cx="155" cy="180" r="6" fill="#F5E642" opacity="0.9"/>
+      <circle cx="120" cy="240" r="4" fill="#3DD6C8" opacity="0.8"/>
+      <circle cx="170" cy="130" r="4" fill="#E84855" opacity="0.8"/>
+      <circle cx="190" cy="290" r="4" fill="#F5E642" opacity="0.6"/>
+      <circle cx="90" cy="200" r="3" fill="#3DD6C8" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="reveal">
+      <div class="time-badge">⏱ 0:00 — 0:15 · Hook</div>
+      <div class="phase-label" style="color:var(--rojo);">Fase 1 · 8% del tiempo</div>
+      <h1>
+        Millones aprenden cultura.<br>
+        <em>Nosotros la hacen vivir.</em>
+      </h1>
+      <p class="tagline">"Tu cultura no es pasado. Es tu aventura." — El único juego educativo construido con comunidades peruanas.</p>
+
+      <div class="hook-stat-row">
+        <div class="hook-stat">
+          <span class="num">85M</span>
+          <span class="lbl">Estudiantes en Latinoamérica</span>
+        </div>
+        <div class="hook-stat">
+          <span class="num">3.2M</span>
+          <span class="lbl">SAM · Perú 8–16 años</span>
+        </div>
+        <div class="hook-stat">
+          <span class="num">0</span>
+          <span class="lbl">Juegos con patrimonio peruano auténtico</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- FASE 2 · INTERÉS  17% → ~30 seg          -->
+<!-- ══════════════════════════════════════════ -->
+<section id="interes">
+  <div class="container">
+    <div class="reveal">
+      <div class="dur-badge">0:15 — 0:45 · 17%</div>
+      <div class="phase-label" style="color:var(--turq);">Fase 2 · Interés</div>
+      <h2>El docente tiene que enseñar patrimonio con herramientas que los estudiantes ignoran.</h2>
+      <p class="sub">El libro aburre. El video se olvida. La visita al museo no existe para la mayoría.</p>
+
+      <div class="problem-grid">
+        <div class="problem-card reveal">
+          <span class="icon">📚</span>
+          <h3>Currículo sin recursos</h3>
+          <p>Personal Social y Arte & Cultura exigen competencias de identidad cultural sin materiales engaging disponibles.</p>
+        </div>
+        <div class="problem-card reveal">
+          <span class="icon">😴</span>
+          <h3>Desconexión generacional</h3>
+          <p>El estudiante cumple en papel pero no genera ningún vínculo real con su identidad cultural.</p>
+        </div>
+        <div class="problem-card reveal">
+          <span class="icon">🚫</span>
+          <h3>Brecha de contenido</h3>
+          <p>Duolingo, Khan Academy y Classcraft dominan el edtech básico. Ninguno aborda patrimonio latinoamericano.</p>
+        </div>
+      </div>
+
+      <div class="market-row">
+        <div class="market-pill">
+          <span class="m-num">85M</span>
+          <span class="m-label">TAM</span>
+          <p class="m-desc">Educación básica Latinoamérica</p>
+        </div>
+        <div class="market-pill">
+          <span class="m-num">3.2M</span>
+          <span class="m-label">SAM</span>
+          <p class="m-desc">Perú 8–16 años con dispositivo</p>
+        </div>
+        <div class="market-pill">
+          <span class="m-num">180K</span>
+          <span class="m-label">SOM · Año 3</span>
+          <p class="m-desc">II.EE. públicas alcanzables</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- FASE 3 · DESEO  33% → ~60 seg            -->
+<!-- ══════════════════════════════════════════ -->
+<section id="deseo">
+  <div class="container">
+    <div class="reveal">
+      <div class="dur-badge">0:45 — 1:45 · 33%</div>
+      <div class="phase-label" style="color:var(--sol);">Fase 3 · Deseo</div>
+      <h2>Patrimonios Vivos</h2>
+      <p class="sub">Un juego donde explorar el Perú, sus danzas, lenguas y tradiciones se convierte en la clase misma.</p>
+
+      <!-- Demo flow -->
+      <div class="demo-flow reveal">
+        <h3>🎮 Demo · Misión Cusco · &lt; 8 minutos · sin instalación</h3>
+        <div class="demo-steps">
+          <div class="demo-step">
+            <div class="step-icon">🗺️</div>
+            <p>Abre mapa del Perú · elige Cusco</p>
+          </div>
+          <div class="demo-step">
+            <div class="step-icon">🎯</div>
+            <p>Misión: completa el textil Q'ero</p>
+          </div>
+          <div class="demo-step">
+            <div class="step-icon">🔊</div>
+            <p>Escucha audio de la comunidad</p>
+          </div>
+          <div class="demo-step">
+            <div class="step-icon">✅</div>
+            <p>Identifica patrón · colócalo</p>
+          </div>
+          <div class="demo-step">
+            <div class="step-icon">🎬</div>
+            <p>Desbloquea video real de campo</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diferenciadores -->
+      <div class="diff-grid">
+        <div class="diff-card reveal">
+          <h3>Autenticidad comunitaria</h3>
+          <p>Contenido producido con las propias comunidades portadoras, no stock editorial.</p>
+        </div>
+        <div class="diff-card reveal">
+          <h3>Alineación CNEB nativa</h3>
+          <p>Diseñado desde el currículo peruano, no adaptado a posteriori.</p>
+        </div>
+        <div class="diff-card reveal">
+          <h3>Narrativa con identidad</h3>
+          <p>El estudiante no aprende sobre el Perú — se convierte en protagonista dentro de él.</p>
+        </div>
+      </div>
+
+      <!-- Roadmap -->
+      <div class="roadmap reveal">
+        <div class="rm-phase">
+          <span class="rm-mes">Mes 3</span>
+          <h4>Prototipo</h4>
+          <p>Región Cusco jugable en navegador</p>
+        </div>
+        <div class="rm-phase">
+          <span class="rm-mes">Mes 6</span>
+          <h4>Piloto</h4>
+          <p>3 II.EE. · 150 estudiantes · datos</p>
+        </div>
+        <div class="rm-phase">
+          <span class="rm-mes">Mes 9</span>
+          <h4>Beta</h4>
+          <p>5 regiones · validación MINEDU</p>
+        </div>
+        <div class="rm-phase">
+          <span class="rm-mes">Mes 12</span>
+          <h4>Lanzamiento</h4>
+          <p>Acceso libre + freemium institucional</p>
+        </div>
+      </div>
+
+      <!-- Moat -->
+      <div class="moat-row">
+        <div class="moat-pill"><span class="dot"></span>Relaciones con comunidades locales (años, no se compran)</div>
+        <div class="moat-pill"><span class="dot"></span>Corpus multimedia propietario en campo</div>
+        <div class="moat-pill"><span class="dot"></span>Confianza institucional MINEDU</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- FASE 4 · ACCIÓN  25% → ~45 seg           -->
+<!-- ══════════════════════════════════════════ -->
+<section id="accion">
+  <div class="container">
+    <div class="reveal">
+      <div class="dur-badge">1:45 — 2:30 · 25%</div>
+      <div class="phase-label" style="color:#A78BFA;">Fase 4 · Acción</div>
+      <h2>¿Qué necesitamos de usted?</h2>
+      <p class="sub">Tres avenidas de colaboración para hacer el piloto realidad en 90 días.</p>
+
+      <div class="ask-grid">
+        <div class="ask-card reveal">
+          <span class="ask-num">01</span>
+          <h3>Inversión seed</h3>
+          <p>Capital para completar el prototipo jugable de Cusco, producción multimedia en campo y servidores del piloto con 150 estudiantes.</p>
+        </div>
+        <div class="ask-card reveal">
+          <span class="ask-num">02</span>
+          <h3>Alianza institucional</h3>
+          <p>Vínculo con MINEDU, DRE o redes de colegios para facilitar el acceso a las 3 instituciones del piloto y validar impacto.</p>
+        </div>
+        <div class="ask-card reveal">
+          <span class="ask-num">03</span>
+          <h3>Mentorship EdTech</h3>
+          <p>Experiencia en escalado de producto educativo en Latinoamérica, relaciones con fondos de impacto y conocimiento regulatorio.</p>
+        </div>
+      </div>
+
+      <div class="next-steps reveal">
+        <h3>Próximos pasos — si hoy decimos sí</h3>
+        <ul>
+          <li>Semana 1–2 · Firma de acuerdo de colaboración y acceso a primer desembolso o contacto institucional.</li>
+          <li>Mes 1 · Inicio de producción en comunidad Q'ero, Cusco — misión piloto completa.</li>
+          <li>Mes 2 · Demo testeable en navegador lista para revisión de socios.</li>
+          <li>Mes 3 · Piloto en 3 II.EE. con instrumentos de medición de aprendizaje e identidad cultural.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- FASE 5 · CIERRE  17% → ~30 seg           -->
+<!-- ══════════════════════════════════════════ -->
+<section id="cierre">
+  <div class="container">
+    <div class="reveal">
+      <div class="dur-badge">2:30 — 3:00 · 17%</div>
+      <div class="phase-label" style="color:var(--sol);">Fase 5 · Cierre</div>
+
+      <h2>
+        La cultura peruana<br>
+        <em>no se enseña. Se vive.</em>
+      </h2>
+      <p class="closing-quote">
+        "Tres capas que no se replican rápido: las comunidades, el corpus auténtico y la confianza del MINEDU.<br>
+        Con su alianza, construimos las tres al mismo tiempo."
+      </p>
+
+      <div class="cta-block">
+        <a href="mailto:nikollyauri1@gmail.com" class="cta-main">Agendemos una reunión →</a>
+        <p class="cta-contact">
+          Nikoll Yauri Mendoza · <a href="mailto:nikollyauri1@gmail.com">nikollyauri1@gmail.com</a>
+        </p>
+      </div>
+
+      <div class="closing-trio">
+        <div class="ct-item">
+          <span class="ct-icon">🎮</span>
+          <span class="ct-val">Demo viva</span>
+          <span class="ct-desc">en navegador · Mes 3</span>
+        </div>
+        <div class="ct-item">
+          <span class="ct-icon">🏫</span>
+          <span class="ct-val">150 estudiantes</span>
+          <span class="ct-desc">piloto validado · Mes 6</span>
+        </div>
+        <div class="ct-item">
+          <span class="ct-icon">🌎</span>
+          <span class="ct-val">85M TAM</span>
+          <span class="ct-desc">mercado latinoamérica</span>
+        </div>
+        <div class="ct-item">
+          <span class="ct-icon">🛡️</span>
+          <span class="ct-val">3 moats</span>
+          <span class="ct-desc">difíciles de replicar</span>
+        </div>
+      </div>
+
+      <div class="footer-meta">
+        Infografía pitch · Patrimonios Vivos · AIDA+Close · Nikoll Yauri Mendoza<br>
+        Infografía — Semana 14 · 23 de junio de 2026
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => obs.observe(r));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+  const sObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.style.background = '');
+        navLinks.forEach(l => l.style.color = '');
+        const active = document.querySelector(`nav a[href="#${e.target.id}"]`);
+        if (active) {
+          active.style.background = 'rgba(245,230,66,0.15)';
+          active.style.color = '#F5E642';
+        }
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => sObs.observe(s));
+</script>
+</body>
+</html>
